@@ -1,0 +1,69 @@
+[
+    {
+        "blogId" : "01",
+        "title" : "UK Visit",
+        "author" : "Amulya Poudel",
+        "date": "03/22/2022",
+        "genre" : [
+            "family",
+            "overseas"
+        ],
+        "blogImg" : "/uk_visit.jpg"
+    },
+    {
+        "blogId" : "02",
+        "title" : "UK Visit",
+        "author" : "Amulya Poudel",
+        "date": "03/22/2022",
+        "genre" : [
+            "family",
+            "overseas"
+        ],
+        "blogImg" : "/38.jpeg"
+    },
+    {
+        "blogId" : "03",
+        "title" : "UK Visit",
+        "author" : "Amulya Poudel",
+        "date": "03/22/2022",
+        "genre" : [
+            "family",
+            "overseas"
+        ],
+        "blogImg" : "/38.jpeg"
+    },
+    {
+        "blogId" : "04",
+        "title" : "UK Visit",
+        "author" : "Amulya Poudel",
+        "date": "03/22/2022",
+        "genre" : [
+            "family",
+            "overseas"
+        ],
+        "blogImg" : "/38.jpeg"
+    },
+    {
+        "blogId" : "05",
+        "title" : "UK Visit",
+        "author" : "Amulya Poudel",
+        "date": "03/22/2022",
+        "genre" : [
+            "family",
+            "overseas"
+        ],
+        "blogImg" : "/38.jpeg"
+    },
+    {
+        "blogId" : "06",
+        "title" : "UK Visit",
+        "author" : "Amulya Poudel",
+        "date": "03/22/2022",
+        "genre" : [
+            "family",
+            "overseas"
+        ],
+        "blogImg" : "/38.jpeg"
+    }
+
+]
