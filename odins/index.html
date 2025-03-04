@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Odin's project Playground</title>
+</head>
+<body>
+  <div class="page_container">
+    <div class="intro_container">
+      <div class="text_container">
+
+        <h1 class="title">Squad builder</h1>
+
+      </div>
+    </div>
+  
+    <div class="display_container">
+  
+      <button class="toggle_btn">Toggle theme</button>
+
+      <div class="table_container"> 
+        <table id="players_table">
+          <tr class="col_heading">
+            <th>Number</th>
+            <th>First name</th>
+            <th>Last name</th>  
+            <th>Position</th>
+          </tr>
+          <tr class="players">
+            <td>1</td>
+            <td>Petr</td>
+            <td>Cech</td>
+            <td>GK</td>
+          </tr>
+          <tr class="players">
+            <td>2</td>
+            <td>Branislav</td>
+            <td>Ivanovic</td>
+            <td>RB</td>
+          </tr>
+          <tr class="players">
+            <td>26</td>
+            <td>John</td>
+            <td>Terry</td>
+            <td>CB</td>
+          </tr>
+          <tr class="players">
+            <td>6</td>
+            <td>Ricardo</td>
+            <td>Carvalho</td>
+            <td>CB</td>
+          </tr>
+          <tr class="players">
+            <td>3</td>
+            <td>Ashley</td>
+            <td>Cole</td>
+            <td>LB</td>
+          </tr>
+          <tr class="players">
+            <td>7</td>
+            <td>N'golo</td>
+            <td>Kante</td>
+            <td>CDM</td>
+          </tr>
+          <tr class="players">
+            <td>4</td>
+            <td>Claudio</td>
+            <td>Makelele</td>
+            <td>CDM</td>
+          </tr>
+          <tr class="players">
+            <td>8</td>
+            <td>Frank</td>
+            <td>Lampard</td>
+            <td>CM</td>
+          </tr>
+          
+          <tr class="players">
+            <td>10</td>
+            <td>Juan</td>
+            <td>Mata</td>
+            <td>RM</td>
+          </tr>
+          
+          <tr class="players">
+            <td>17</td>
+            <td>Eden</td>
+            <td>Hazard</td>
+            <td>LM</td>
+          </tr>
+          
+          <tr class="players">
+            <td>11</td>
+            <td>Didier</td>
+            <td>Drogba</td>
+            <td>ST</td>
+          </tr>
+        </table>
+      </div>
+  
+      <div class="form_container">
+
+        <h2 class="form_heading">Add a player</h2>
+        <form action="#" method="get" >
+          
+          <div class="details_container">
+            <div class="first_ctn">
+              <label for="first_name" class="player_labels">First Name</label>
+              <input type="text" name="first_name" id="first_name" required>
+            </div>
+            <div class="last_ctn">
+              <label for="last_name" class="player_labels">Last Name</label>
+              <input type="text" name="last_name" id="last_name" required>
+            </div>
+            <div class="number_ctn">
+              <label for="player_num" class="player_labels">Number</label>
+              <input type="number" name="player_num" id="player_num" max=99 min=1 required>
+            </div>
+            <div class="position_ctn">
+              <label for="position" class="player_labels">Position</label>
+              <select name="position" id="position">
+                <option value="Gk">GK</option>
+                <option value="rb">RB</option>
+                <option value="rcb">RCB</option>
+                <option value="lcb">LCB</option>
+                <option value="lb">LB</option>
+                <option value="cm">CM</option>
+                <option value="cdm">CDM</option>
+                <option value="am">AM</option>
+                <option value="rm">RM</option>
+                <option value="lm">LM</option>
+                <option value="rw">RW</option>
+                <option value="lw">LW</option>
+                <option value="st">ST</option>
+              </select>  
+            </div>
+            
+          </div>
+          
+          <div class="technical_container">
+            <p>Preferred Foot:</p>
+            <fieldset>
+              <div>
+                <input type="radio" id="right" name="pref_feet" value="right">
+                <label for="right">Right</label>
+              </div>
+              
+              <div>
+                <input type="radio" id="left" name="pref_feet" value="left">
+                <label for="left">Left</label>
+              </div>
+        
+              <div>
+                <input type="radio" id="both" name="pref_feet" value="both">
+                <label for="both">Both</label>
+              </div>
+            
+            </fieldset>
+          </div>
+        
+    
+          <button type="submit" class="submit_btn">Submit</button>
+
+        
+        </form>      
+
+      </div>
+  
+  
+      
+  
+  
+    </div>
+
+  </div>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
