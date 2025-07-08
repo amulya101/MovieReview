@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html landg="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DEMO</title>
+</head>
+
+<body>
+    <nav>
+        <div class="title">
+            <h1>Blog demo</h1>
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blogs/create">New Blog</a></li>
+        </ul>
+    </nav>
+
+
+    <div detail_ctn>
+        <div class="blog content">
+            <h2>Blog Details</h2>
+
+            <% if (blog) { %>
+                <div class="blog">
+                    <h3><%= blog.title %></h3>
+                    <p><%= blog.body %></p>
+                </div>
+            <% } else { %>
+                <p>Blog not found.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
