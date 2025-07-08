@@ -8,7 +8,7 @@ const Blog = require("./models/node_blogs");
 
 const app = express();
 
-const dbURI = "mongodb+srv://testinguser1:hEllo1234@cluster0.8qnfoyi.mongodb.net/nodeDB?retryWrites=true&w=majority";
+const dbURI = null; // Replace with your MongoDB connection string later
 mongoose.connect(dbURI)
   .then((resolved) => {
     console.log("Connected to MongoDB");
