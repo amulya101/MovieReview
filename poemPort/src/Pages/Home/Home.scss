@@ -1,0 +1,29 @@
+.homeCtn{
+  width: 100%;
+  justify-items: center;
+
+  &__stage {
+    width: 75%;
+    background: rgba(117, 115, 115, 0.12);
+    justify-items: center;
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(248, 247, 247, 0.1);
+    padding: 50px;
+  }
+  &__card {  
+    width: 50%; 
+    background-color: #d9c7c7;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 8px rgba(44, 34, 34, 0.736);
+    text-align: center;
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #333;
+    }
+  }
+}

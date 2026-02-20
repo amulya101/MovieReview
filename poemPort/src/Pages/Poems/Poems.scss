@@ -1,0 +1,20 @@
+.poemsCtn{
+    display: flex;
+    justify-content: center;
+}
+
+.poemsTitle{
+    justify-items: center;
+    margin-bottom: 16px;
+}
+
+.cardsCol{
+    width: 50%;
+    height: 25%;
+}
+
+.categoryCol{
+    padding: 20px;
+    flex: 1;
+    text-align: right;
+}
