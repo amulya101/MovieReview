@@ -1,0 +1,62 @@
+@use './variables' as *;
+
+// ============================================================
+// HEADING DEFAULTS
+// ============================================================
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  color: $color-text-primary;
+  line-height: $leading-tight;
+  letter-spacing: $tracking-tight;
+}
+
+h1 { font-size: $text-3xl; }
+h2 { font-size: $text-2xl; }
+h3 { font-size: $text-xl; }
+h4 { font-size: $text-lg; }
+h5 { font-size: $text-md; }
+h6 { font-size: $text-base; }
+
+p {
+  font-family: $font-body;
+  color: $color-text-primary;
+  line-height: $leading-normal;
+  font-size: $text-base;
+}
+
+// ============================================================
+// UTILITY CLASSES
+// ============================================================
+
+// Poem content — generous leading, preserves line breaks
+.text-poem {
+  font-family: $font-body;
+  font-size: $text-md;
+  line-height: $leading-loose;
+  color: $color-text-primary;
+  white-space: pre-wrap;
+  letter-spacing: $tracking-normal;
+}
+
+// Lead paragraph
+.text-lead {
+  font-family: $font-body;
+  font-size: $text-md;
+  line-height: $leading-relaxed;
+  color: $color-text-muted;
+}
+
+// Small metadata labels
+.text-meta {
+  font-family: $font-ui;
+  font-size: $text-sm;
+  color: $color-text-muted;
+  letter-spacing: $tracking-wider;
+  text-transform: uppercase;
+}
+
+// Accent colored text
+.text-accent {
+  color: $color-accent;
+}
