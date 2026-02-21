@@ -1,29 +1,62 @@
-.homeCtn{
-  width: 100%;
-  justify-items: center;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.homeCtn {
+  @include flex-center;
+  flex-direction: column;
+  min-height: calc(100vh - 160px);
+  padding: $space-12 $space-4;
 
   &__stage {
-    width: 75%;
-    background: rgba(117, 115, 115, 0.12);
-    justify-items: center;
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 30px rgba(248, 247, 247, 0.1);
-    padding: 50px;
-  }
-  &__card {  
-    width: 50%; 
-    background-color: #d9c7c7;
-    padding: 20px;
-    border-radius: 1rem;
-    box-shadow: 0px 2px 8px rgba(44, 34, 34, 0.736);
+    @include glass($color-glass-bg, 16px);
+    border-radius: $radius-xl;
+    padding: $space-20 $space-16;
     text-align: center;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: $shadow-lg;
+    position: relative;
+
+    // Accent rule beneath the stage content
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: $color-accent;
+      margin: $space-8 auto 0;
+      border-radius: $radius-pill;
+    }
+
+    @include respond-to(tablet) {
+      padding: $space-16 $space-10;
+    }
+
+    @include respond-to(mobile) {
+      padding: $space-12 $space-6;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
 
     h1 {
-      margin: 0;
-      font-size: 2rem;
-      color: #333;
+      font-family: $font-display;
+      font-size: $text-3xl;
+      font-weight: $weight-bold;
+      color: $color-text-primary;
+      letter-spacing: $tracking-tight;
+      line-height: $leading-tight;
+      text-shadow:
+        0 0 40px $color-shadow-accent,
+        0 0 80px rgba(232, 57, 77, 0.15);
+
+      @include respond-to(mobile) {
+        font-size: $text-2xl;
+      }
     }
   }
 }

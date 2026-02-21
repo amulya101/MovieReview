@@ -1,0 +1,120 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// CommentsSection wrapper
+.comments_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  > h3 {
+    font-size: $text-xl;
+    color: $color-text-primary;
+    padding-bottom: $space-4;
+    border-bottom: 2px solid $color-accent;
+    display: inline-block;
+  }
+}
+
+// Comments list
+.comments_list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  > p {
+    font-family: $font-ui;
+    font-size: $text-base;
+    color: $color-text-muted;
+    font-style: italic;
+  }
+}
+
+.comment {
+  @include glass;
+  border-radius: $radius-md;
+  padding: $space-5;
+  border-left: 3px solid $color-border;
+  transition: border-color $transition-base;
+
+  &:hover {
+    border-left-color: $color-accent;
+  }
+}
+
+.comment_author {
+  font-family: $font-ui;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  color: $color-accent-secondary;
+  letter-spacing: $tracking-wide;
+  text-transform: uppercase;
+  margin-bottom: $space-2;
+}
+
+.comment_text {
+  font-family: $font-body;
+  font-size: $text-base;
+  color: $color-text-primary;
+  line-height: $leading-normal;
+}
+
+// Add comment form
+.add_comment {
+  @include glass;
+  border-radius: $radius-lg;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  border-top: 1px solid $color-border;
+  margin-top: $space-4;
+
+  h3 {
+    font-size: $text-lg;
+    color: $color-text-primary;
+    margin-bottom: $space-2;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    background-color: $color-bg-primary;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: $space-3 $space-4;
+    color: $color-text-primary;
+    font-family: $font-body;
+    font-size: $text-base;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+    resize: vertical;
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent;
+      box-shadow: 0 0 0 3px $color-shadow-accent;
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    line-height: $leading-relaxed;
+  }
+
+  button {
+    @include btn-base;
+    align-self: flex-start;
+    background-color: $color-accent;
+    color: $color-text-primary;
+
+    &:hover {
+      background-color: $color-accent-hover;
+      box-shadow: $shadow-glow;
+    }
+  }
+}

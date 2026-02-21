@@ -1,0 +1,107 @@
+// ============================================================
+// COLORS
+// ============================================================
+$color-bg-primary:        #0D0D1A;
+$color-bg-secondary:      #16182E;
+$color-bg-tertiary:       #1E2040;
+$color-accent:            #E8394D;
+$color-accent-hover:      #C42D3F;
+$color-accent-secondary:  #F4A535;
+$color-accent-sec-hover:  #D48F2A;
+$color-text-primary:      #F2EFE9;
+$color-text-muted:        #8A8FA8;
+$color-text-inverse:      #0D0D1A;
+$color-border:            #2C3055;
+$color-shadow-dark:       rgba(0, 0, 0, 0.6);
+$color-shadow-accent:     rgba(232, 57, 77, 0.25);
+$color-glass-bg:          rgba(22, 24, 46, 0.75);
+$color-glass-border:      rgba(255, 255, 255, 0.08);
+
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+$font-display:  'BraahOne', sans-serif;
+$font-body:     Georgia, 'Times New Roman', serif;
+$font-ui:       system-ui, -apple-system, sans-serif;
+
+// Major Third scale (1.250 ratio, px)
+$text-xs:    10px;
+$text-sm:    13px;
+$text-base:  16px;
+$text-md:    20px;
+$text-lg:    25px;
+$text-xl:    31px;
+$text-2xl:   39px;
+$text-3xl:   49px;
+
+$weight-normal:   400;
+$weight-medium:   500;
+$weight-semibold: 600;
+$weight-bold:     700;
+
+$leading-tight:   1.2;
+$leading-snug:    1.4;
+$leading-normal:  1.6;
+$leading-relaxed: 1.8;
+$leading-loose:   2.0;
+
+$tracking-tight:  -1px;
+$tracking-normal:  0px;
+$tracking-wide:    1px;
+$tracking-wider:   2px;
+
+// ============================================================
+// SPACING (px)
+// ============================================================
+$space-1:  4px;
+$space-2:  8px;
+$space-3:  12px;
+$space-4:  16px;
+$space-5:  20px;
+$space-6:  24px;
+$space-8:  32px;
+$space-10: 40px;
+$space-12: 48px;
+$space-16: 64px;
+$space-20: 80px;
+$space-24: 96px;
+
+// ============================================================
+// BORDERS & RADII
+// ============================================================
+$radius-sm:   4px;
+$radius-md:   8px;
+$radius-lg:   16px;
+$radius-xl:   24px;
+$radius-pill: 9999px;
+
+// ============================================================
+// BREAKPOINTS
+// ============================================================
+$bp-mobile:   480px;
+$bp-tablet:   768px;
+$bp-desktop:  1200px;
+$bp-wide:     1440px;
+
+// ============================================================
+// CONTAINERS
+// ============================================================
+$container-sm:  540px;
+$container-md:  960px;
+$container-lg:  1140px;
+$container-xl:  1320px;
+
+// ============================================================
+// TRANSITIONS
+// ============================================================
+$transition-fast:  0.15s ease;
+$transition-base:  0.25s ease;
+$transition-slow:  0.4s ease;
+
+// ============================================================
+// SHADOWS
+// ============================================================
+$shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.6);
+$shadow-md:   0 4px 12px rgba(0, 0, 0, 0.6);
+$shadow-lg:   0 8px 32px rgba(0, 0, 0, 0.6);
+$shadow-glow: 0 0 24px rgba(232, 57, 77, 0.25);

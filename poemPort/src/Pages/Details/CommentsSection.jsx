@@ -1,3 +1,4 @@
+import './CommentsSection.scss';
 import CommentsList from "./CommentsList";
 import AddComment from "./AddComment";
 

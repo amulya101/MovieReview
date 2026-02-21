@@ -1,0 +1,40 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.about-page {
+  max-width: $container-md;
+  margin-inline: auto;
+  padding: $space-16 $space-8;
+  text-align: center;
+
+  @include respond-to(mobile) {
+    padding: $space-10 $space-4;
+  }
+
+  h1 {
+    font-size: $text-3xl;
+    color: $color-text-primary;
+    letter-spacing: $tracking-tight;
+    margin-bottom: $space-6;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: $color-accent;
+      margin: $space-4 auto 0;
+      border-radius: $radius-pill;
+    }
+  }
+
+  p {
+    font-family: $font-body;
+    font-size: $text-md;
+    color: $color-text-muted;
+    line-height: $leading-relaxed;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+}

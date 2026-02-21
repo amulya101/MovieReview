@@ -1,3 +1,10 @@
+// @use rules must come first
+@use './styles/variables' as *;
+@use './styles/reset';
+@use './styles/typography';
+@use './styles/grid';
+
+// Font definition (after @use)
 @font-face {
   font-family: 'BraahOne';
   src: url('./assets/fonts/BraahOne-Regular.ttf') format('opentype');
@@ -5,18 +12,22 @@
   font-style: normal;
 }
 
+// Root
 :root {
-  font-family: 'BraahOne', sans-serif;
-  line-height: 1;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: #4A4A4A;
-  background-color: #E0BFB8;
-
+  font-family: $font-display;
+  line-height: $leading-normal;
+  font-weight: $weight-normal;
+  color: $color-text-primary;
+  background-color: $color-bg-primary;
+  color-scheme: dark;
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background-color: $color-bg-primary;
+}
+
+::selection {
+  background-color: $color-accent;
+  color: $color-text-primary;
+}

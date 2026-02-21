@@ -1,0 +1,70 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+// ============================================================
+// CONTAINER — centered, responsive max-width
+// ============================================================
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: $space-4;
+  max-width: $container-xl;
+
+  @include respond-to(tablet) {
+    padding-inline: $space-5;
+    max-width: $container-md;
+  }
+
+  @include respond-to(mobile) {
+    padding-inline: $space-4;
+  }
+}
+
+// ============================================================
+// 12-COLUMN GRID
+// Desktop: 12 cols, 24px gap
+// Tablet:   8 cols, 16px gap
+// Mobile:   4 cols, 12px gap
+// ============================================================
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $space-6;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(8, 1fr);
+    gap: $space-4;
+  }
+
+  @include respond-to(mobile) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-3;
+  }
+}
+
+// ============================================================
+// COLUMN SPAN UTILITIES
+// ============================================================
+
+// Desktop (12-col context)
+@for $i from 1 through 12 {
+  .col-#{$i} { grid-column: span #{$i}; }
+}
+
+// Tablet overrides (8-col context)
+@include respond-to(tablet) {
+  @for $i from 1 through 8 {
+    .col-tablet-#{$i} { grid-column: span #{$i}; }
+  }
+}
+
+// Mobile overrides (4-col context) — all wider cols collapse to full width
+@include respond-to(mobile) {
+  @for $i from 1 through 4 {
+    .col-mobile-#{$i} { grid-column: span #{$i}; }
+  }
+
+  [class^="col-"] {
+    grid-column: span 4;
+  }
+}

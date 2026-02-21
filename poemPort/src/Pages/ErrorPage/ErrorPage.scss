@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.error-page {
+  @include flex-center;
+  flex-direction: column;
+  min-height: calc(100vh - 160px);
+  padding: $space-12 $space-4;
+  text-align: center;
+  gap: $space-4;
+
+  h1 {
+    font-size: 96px;
+    font-weight: $weight-bold;
+    color: $color-accent;
+    letter-spacing: $tracking-tight;
+    line-height: 1;
+    text-shadow: 0 0 60px $color-shadow-accent;
+  }
+
+  h2 {
+    font-size: $text-2xl;
+    color: $color-text-primary;
+  }
+
+  p {
+    font-family: $font-body;
+    font-size: $text-base;
+    color: $color-text-muted;
+    max-width: 400px;
+  }
+}

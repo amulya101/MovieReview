@@ -1,0 +1,125 @@
+@use './variables' as *;
+
+// ============================================================
+// RESPONSIVE BREAKPOINTS
+// Usage: @include respond-to(tablet) { ... }
+// ============================================================
+@mixin respond-to($bp) {
+  @if $bp == 'mobile' {
+    @media (max-width: #{$bp-tablet - 1}) { @content; }
+  } @else if $bp == 'tablet' {
+    @media (min-width: $bp-tablet) and (max-width: #{$bp-desktop - 1}) { @content; }
+  } @else if $bp == 'tablet-up' {
+    @media (min-width: $bp-tablet) { @content; }
+  } @else if $bp == 'desktop' {
+    @media (min-width: $bp-desktop) { @content; }
+  } @else if $bp == 'wide' {
+    @media (min-width: $bp-wide) { @content; }
+  }
+}
+
+// ============================================================
+// GLASSMORPHISM PANEL
+// ============================================================
+@mixin glass($bg: $color-glass-bg, $blur: 12px) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid $color-glass-border;
+}
+
+// ============================================================
+// FLEX UTILITIES
+// ============================================================
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ============================================================
+// ANIMATED ACCENT UNDERLINE (for nav links)
+// ============================================================
+@mixin accent-underline {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $color-accent;
+    transition: width $transition-base;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+}
+
+// ============================================================
+// CARD HOVER LIFT
+// ============================================================
+@mixin card-hover {
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-lg, $shadow-glow;
+  }
+}
+
+// ============================================================
+// BUTTON BASE
+// ============================================================
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: $radius-md;
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-size: $text-base;
+  letter-spacing: $tracking-wide;
+  cursor: pointer;
+  transition: background-color $transition-fast, transform $transition-fast, box-shadow $transition-fast;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+// ============================================================
+// TRUNCATE TEXT TO ONE LINE
+// ============================================================
+@mixin truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// ============================================================
+// VISUALLY HIDDEN (accessible)
+// ============================================================
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
