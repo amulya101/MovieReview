@@ -5,7 +5,7 @@ import Card from "../../components/Card/Card.jsx";
 const Poems = () => {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    fetch("http://localhost:3001/poems")
+    fetch(`${import.meta.env.VITE_API_URL}/poems`)
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.error("Error fetching poems:", err));

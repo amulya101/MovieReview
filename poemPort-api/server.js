@@ -1,91 +1,78 @@
-import express from "express";
-import cors from "cors";
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import { pool } from './db.js';
+
 const app = express();
-app.use(cors());
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
-const poems = [
-  {
-      id: 1,
-      author: "Lamxmi Devi Kota",
-      title: "Poem Title 1",
-      description: "This is a description of Poem Title 1.",
-      image: "./poet.jpeg",
-      content: "नछाडी जानोस् हे मेरा प्राण ! अकेली मलाई, मनको वनमा ननिभ्ने गरी विरह जलाई ! ननिभ्ने गरी विरह जलाई, लोचनका तारा ! हे मेर प्यारा ! यो जोति  बिलाए ! के भनूँ? भन्ने म केही थिइन  विष नै पिलाए ! प्यारा ! विष नै पिलाए !मनको कुरा गलामा अड्छ, अड्कन्छ गलामा, यो मेरो मुटु पचासबाजी धड्कन्छ पलामा । यो छाती मेरो चिरेर खोली नजर गराए,"
-    },
-    {
-      id: 2,
-      author: "Lamxmi Prasad Devkota",
-      title: "Poem Title 2",
-      description: "This is a description of Poem Title 2.",
-      image: "./poet.jpeg",
-      content: "नछाडी जानोस् हे मेरा प्राण ! अकेली मलाई, मनको वनमा ननिभ्ने गरी विरह जलाई ! ननिभ्ने गरी विरह जलाई, लोचनका तारा ! हे मेर प्यारा ! यो जोति  बिलाए ! के भनूँ? भन्ने म केही थिइन  विष नै पिलाए ! प्यारा ! विष नै पिलाए !मनको कुरा गलामा अड्छ, अड्कन्छ गलामा, यो मेरो मुटु पचासबाजी धड्कन्छ पलामा । यो छाती मेरो चिरेर खोली नजर गराए,"
-    },
-    {
-      id: 3,
-      author: "Lamxmi Prasad Devkota",
-      title: "Poem Title 3",
-      description: "This is a description of Poem Title 3.",
-      image: "./poet.jpeg",
-      content: "नछाडी जानोस् हे मेरा प्राण ! अकेली मलाई, मनको वनमा ननिभ्ने गरी विरह जलाई ! ननिभ्ने गरी विरह जलाई, लोचनका तारा ! हे मेर प्यारा ! यो जोति  बिलाए ! के भनूँ? भन्ने म केही थिइन  विष नै पिलाए ! प्यारा ! विष नै पिलाए !मनको कुरा गलामा अड्छ, अड्कन्छ गलामा, यो मेरो मुटु पचासबाजी धड्कन्छ पलामा । यो छाती मेरो चिरेर खोली नजर गराए,"
-    },
-    {
-      id: 4,
-      author: "Lamxmi Prasad Devkota",
-      title: "Poem Title 4",
-      description: "This is a description of Poem Title 4.",
-      image: "./poet.jpeg",
-      content: "नछाडी जानोस् हे मेरा प्राण ! अकेली मलाई, मनको वनमा ननिभ्ने गरी विरह जलाई ! ननिभ्ने गरी विरह जलाई, लोचनका तारा ! हे मेर प्यारा ! यो जोति  बिलाए ! के भनूँ? भन्ने म केही थिइन  विष नै पिलाए ! प्यारा ! विष नै पिलाए !मनको कुरा गलामा अड्छ, अड्कन्छ गलामा, यो मेरो मुटु पचासबाजी धड्कन्छ पलामा । यो छाती मेरो चिरेर खोली नजर गराए,"
-    }
-];
-
-// Allow JSON requests/responses
+app.use(helmet());
+app.use(cors({ origin: process.env.ALLOWED_ORIGIN }));
 app.use(express.json());
 
-let comments = [
-  {id: 1, poemId: 1, author: "Amulya", text: "Great poem!"},
-];
-
-// Root route
-app.get("/", (req, res) => {
-  res.send("User API is running!");
+// Health check
+app.get('/', (req, res) => {
+  res.send('PoemPort API is running!');
 });
 
-// Endpoint to get list of users
-app.get("/poems", (req, res) => {
-  const shortPoems = poems.map(({ id, title, description, image, author }) => ({
-    id,
-    title,
-    description,
-    image,
-    author
-  }));
-  res.json(shortPoems);
+// GET all poems (summary — no content field)
+app.get('/poems', async (req, res, next) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT id, title, description, image, author FROM poems ORDER BY id'
+    );
+    res.json(rows);
+  } catch (err) {
+    next(err);
+  }
 });
 
-app.get("/poems/:id", (req, res) => {
-  const poem_content = poems.find(p => p.id === parseInt(req.params.id));
-  if (!poems) return res.status(404).json({ message: "Post not found" });
-  res.json(poem_content);
+// GET single poem (full content)
+app.get('/poems/:id', async (req, res, next) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT * FROM poems WHERE id = $1',
+      [req.params.id]
+    );
+    if (rows.length === 0) return res.status(404).json({ message: 'Poem not found' });
+    res.json(rows[0]);
+  } catch (err) {
+    next(err);
+  }
 });
 
-app.get("/poems/:id/comments", (req, res) => {
-  const poemId = parseInt(req.params.id);
-  const poemComments = comments.filter(c => c.poemId === poemId);
-  res.json(poemComments);
+// GET comments for a poem
+app.get('/poems/:id/comments', async (req, res, next) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT * FROM comments WHERE poem_id = $1 ORDER BY id',
+      [req.params.id]
+    );
+    res.json(rows);
+  } catch (err) {
+    next(err);
+  }
 });
 
-app.post("/poems/:id/comments", (req, res) => {
-  const poemId = parseInt(req.params.id);
-  const { author, text } = req.body;
-  const newComment = {
-    id: comments.length + 1,
-    poemId,
-    author,
-    text
-  };
-  comments.push(newComment);
-  res.status(201).json(newComment);
+// POST a new comment on a poem
+app.post('/poems/:id/comments', async (req, res, next) => {
+  try {
+    const { author, text } = req.body;
+    const { rows } = await pool.query(
+      'INSERT INTO comments (poem_id, author, text) VALUES ($1, $2, $3) RETURNING *',
+      [req.params.id, author, text]
+    );
+    res.status(201).json(rows[0]);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Central error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal server error' });
 });
 
 app.listen(PORT, () => {

@@ -2,16 +2,23 @@
   "name": "poemport-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "dotenv": "^17.3.1",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "pg": "^8.20.0"
   },
   "type": "module"
 }

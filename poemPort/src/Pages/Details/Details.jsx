@@ -10,7 +10,7 @@ export default function Details() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/poems/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/poems/${id}`)
       .then((response) => response.json())
       .then((data) => setPoem(data))
       .catch((error) => console.error("Error fetching poem details:", error));
